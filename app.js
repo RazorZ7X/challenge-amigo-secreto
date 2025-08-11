@@ -16,5 +16,21 @@ function agregarAmigo() {
     }
     //Limpiar el campo de texto
     document.getElementById("amigo").value = "";
+    console.log(amigos);
+    mostrarAmigos();
 }
+
+//Función que recorra el array amigos y agregue cada nombre como un elemento <li> dentro de una lista HTML. 
+function mostrarAmigos() {
+    let lista = document.getElementById("listaAmigos");
+    lista.innerHTML = ""; // Limpiar la lista antes de agregar nuevos elementos
+    //Usa un bucle for para recorrer el arreglo amigos y crear elementos de lista (<li>) para cada título.
+    for (let i = 0; i < amigos.length; i++) {
+        let li = document.createElement("li"); //Para cada amigo, crear un nuevo elemento de lista
+        li.textContent = amigos[i];
+        lista.appendChild(li);
+    }
+}
+
+
 
