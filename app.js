@@ -1,5 +1,3 @@
-// El principal objetivo de este desafío es fortalecer tus habilidades en lógica de programación. Aquí deberás desarrollar la lógica para resolver el problema.
-
 //Variable de tipo array, que almacenará los nombres de los amigos ingresados
 let amigos = [];
 
@@ -16,21 +14,32 @@ function agregarAmigo() {
     }
     //Limpiar el campo de texto
     document.getElementById("amigo").value = "";
-    console.log(amigos);
     mostrarAmigos();
 }
 
-//Función que recorra el array amigos y agregue cada nombre como un elemento <li> dentro de una lista HTML. 
+//Función que recorre el array amigos y agregue cada nombre como un elemento <li> dentro de una lista HTML. 
 function mostrarAmigos() {
-    let lista = document.getElementById("listaAmigos");
-    lista.innerHTML = ""; // Limpiar la lista antes de agregar nuevos elementos
+    let lista = document.getElementById("listaAmigos"); //Obtener la lista de amigos
+    lista.innerHTML = ""; //Limpia la lista antes de agregar nuevos elementos
     //Usa un bucle for para recorrer el arreglo amigos y crear elementos de lista (<li>) para cada título.
     for (let i = 0; i < amigos.length; i++) {
         let li = document.createElement("li"); //Para cada amigo, crear un nuevo elemento de lista
-        li.textContent = amigos[i];
-        lista.appendChild(li);
+        li.textContent = amigos[i]; //Asignar el nombre del amigo al contenido del elemento de lista
+        lista.appendChild(li);//Agregar el elemento de lista a la lista de amigos
     }
 }
 
-
+//Función que selecciona de manera aleatoria uno de los nombres almacenados en el array amigos. 
+function sortearAmigo() {
+    //Validar que haya amigos en la lista antes de seleccionar uno
+    if (amigos.length === 0) {
+        alert("No hay amigos para seleccionar."); // Si no hay amigos, mostrar un mensaje
+    }else {
+        let indiceAleatorio = Math.floor(Math.random() * amigos.length);//Obtener un índice aleatorio
+        //Ocultar lista de amigos
+        document.getElementById("listaAmigos").style.display = "none";
+        //Actualiza el contenido del elemento de resultado utilizando document.getElementById()  e innerHTML.
+        document.getElementById("resultado").innerHTML = "El amigo seleccionado es: " + amigos[indiceAleatorio];
+    }
+}
 
